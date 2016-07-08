@@ -8,6 +8,9 @@ func Evaluate(exp []rune, evar map[rune]bool, eval []rune) bool {
 	var stack [100]rune
 	var si int = -1
 
+	// Copying the postfix to temporary variable so that
+	// original value in the `exp` does not get modified
+	// and will be available for next iteration
 	var expression []rune
 	for _, e := range exp {
 		expression = append(expression, e)

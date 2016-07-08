@@ -2,7 +2,6 @@
 Purpose 	  : Checking wheather the given expression is a tautology
 File Name	  : verifier.go
 Package		  : main
-Date 		  : 03.07.2016
 Author 		  : Mahendran Kathirvel
 */
 
@@ -39,11 +38,12 @@ func main() {
 
 	// Convert given expression into postfix
 	exp, expvar := postfix.Convert(input)
+	fmt.Println("Postfix is: ", string(exp))
 
 	var data []rune
 	len := len(expvar)
 
-	var result []bool
+	result := make(chan bool)
 
 	// constructing truth table for validating postfix expression
 	for i := 0; i < (1 << uint(len)); i++ {
@@ -57,17 +57,21 @@ func main() {
 		}
 
 		// evaluates the expression for generated data
-		result = append(result, postfix.Evaluate(exp, expvar, data))
+		// deploy goroutine for each data set
+		go func() {
+			result <- postfix.Evaluate(exp, expvar, data)
+		}()
 	}
 
 	var status bool
-	// validating the results
+
+	// validating the results received from channel
 	for i := 0; i < (1 << uint(len)); i++ {
-		if !result[i] {
+		if <-result {
+			status = true
+		} else {
 			status = false
 			break
-		} else {
-			status = true
 		}
 	}
 

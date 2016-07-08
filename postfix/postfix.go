@@ -28,6 +28,8 @@ func Convert(expression string) ([]rune, map[rune]bool) {
 
 					queue = append(queue, s)
 					qi++
+				} else {
+					break
 				}
 			}
 			si++
@@ -53,6 +55,8 @@ func Convert(expression string) ([]rune, map[rune]bool) {
 			if !variables[e] {
 				variables[e] = true
 			}
+		default:
+			continue
 		}
 	}
 
@@ -108,7 +112,7 @@ func isSpace(r rune) bool {
 	return false
 }
 
-// isOpenParenthesis finds wheather given value is left parenthesis or not
+// isOpenParentheses finds wheather given value is left parentheses or not
 func isOpenParentheses(r rune) bool {
 	if r == '(' {
 		return true
@@ -116,7 +120,7 @@ func isOpenParentheses(r rune) bool {
 	return false
 }
 
-// isCloseParenthesis finds wheather given value is right parenthesis or not
+// isCloseParentheses finds wheather given value is right parentheses or not
 func isCloseParentheses(r rune) bool {
 	if r == ')' {
 		return true
