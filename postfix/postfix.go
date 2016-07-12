@@ -19,7 +19,7 @@ func Convert(expression string) ([]rune, map[rune]bool) {
 		switch {
 		case isSpace(e):
 			continue
-		case isNot(e) || isAnd(e) || isOr(e):
+		case isNot(e), isAnd(e), isOr(e):
 			for (si != -1) && (stack[si] == '!' || stack[si] == '&' || stack[si] == '|') {
 				if precedence(e) <= precedence(stack[si]) {
 					s := stack[si]
