@@ -15,6 +15,7 @@ func TestConvert(t *testing.T) {
 		{"(!a|(b&!a))", "a!ba!&|"},
 		{"(!a|a)", "a!a|"},
 		{"((a&(!b|b))|(!a&(!b|b)))", "ab!b|&a!b!b|&|"},
+		{"a|!b", "ab!|"},
 	}
 
 	for _, e := range exp {
