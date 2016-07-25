@@ -107,8 +107,5 @@ func eval_or(r1, r2 rune) rune {
 
 // isData finds wheather given value is data or not
 func isData(r rune) bool {
-	if r == '0' || r == '1' {
-		return true
-	}
-	return false
+	return r == '0' || r == '1'
 }

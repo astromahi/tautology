@@ -4,13 +4,11 @@ import (
 	"testing"
 )
 
-type expression struct {
-	infix, postfix string
-}
-
 func TestConvert(t *testing.T) {
 
-	exp := []expression{
+	exp := []struct {
+		infix, postfix string
+	}{
 		{"(!a|(a&a))", "a!aa&|"},
 		{"(!a|(b&!a))", "a!ba!&|"},
 		{"(!a|a)", "a!a|"},

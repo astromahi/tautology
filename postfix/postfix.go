@@ -74,58 +74,37 @@ func Convert(expression string) ([]rune, map[rune]bool) {
 
 // isNot finds wheather given value is logical `NOT` or not
 func isNot(r rune) bool {
-	if r == '!' {
-		return true
-	}
-	return false
+	return r == '!'
 }
 
 // isAnd finds wheather given value is logical `AND` or not
 func isAnd(r rune) bool {
-	if r == '&' {
-		return true
-	}
-	return false
+	return r == '&'
 }
 
 // isOr finds wheather given value is logical `OR` or not
 func isOr(r rune) bool {
-	if r == '|' {
-		return true
-	}
-	return false
+	return r == '|'
 }
 
 // isAlphabet finds wheather given value is alphabet or not
 func isAlphabet(r rune) bool {
-	if r >= 'a' && r <= 'z' {
-		return true
-	}
-	return false
+	return r >= 'a' && r <= 'z'
 }
 
 // isSpace finds wheather given value is space or not
 func isSpace(r rune) bool {
-	if r == ' ' {
-		return true
-	}
-	return false
+	return r == ' '
 }
 
 // isOpenParentheses finds wheather given value is left parentheses or not
 func isOpenParentheses(r rune) bool {
-	if r == '(' {
-		return true
-	}
-	return false
+	return r == '('
 }
 
 // isCloseParentheses finds wheather given value is right parentheses or not
 func isCloseParentheses(r rune) bool {
-	if r == ')' {
-		return true
-	}
-	return false
+	return r == ')'
 }
 
 // precedence is a local function that helps dealing with operator precedence
